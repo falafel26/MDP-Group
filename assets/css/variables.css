@@ -1,0 +1,28 @@
+:root {
+  /* COLORS */
+  --primary: #0B3C8A;
+  --secondary: #072f6b;
+  --text-dark: #0f0f0f;
+  --text-muted: #64748B;
+  --white: #FFFFFF;
+  --border-light: #E5E7EB;
+
+
+  /* TYPOGRAPHY */
+  --font-primary: "Inter", sans-serif;
+
+  --lh-heading: 1.2;
+  --lh-body: 1.6;
+
+  /* SPACING (8px grid) */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 56px;
+  --space-xl: 64px;
+
+  /* UI */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-card: 0 12px 30px rgba(0,0,0,0.08);
+}

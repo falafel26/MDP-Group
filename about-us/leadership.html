@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MDP Group | Our Team</title>
+
+    <!-- ================= BOOTSTRAP CSS ================= -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- ================= GOOGLE FONT ================= -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ================= GLOBAL CSS ================= -->
+    <link rel="stylesheet" href="/assets/css/variables.css" />
+    <link rel="stylesheet" href="/assets/css/global.css" />
+    <link rel="stylesheet" href="/assets/css/components.css" />
+    <link rel="stylesheet" href="/assets/css/pages.css" />
+  </head>
+
+  <body>
+    <!-- ================= GLOBAL HEADER ================= -->
+    <div id="header" class="sticky-top" style="z-index: 1050"></div>
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <!-- HERO SECTION -->
+
+    <section>
+      <div
+        class="hero-section-extra"
+        style="
+          background-image: url(&quot;../../assets/images/hero/overview.png&quot;);
+        "
+      >
+        <div class="container text-white text-center" style="margin-top: -50px">
+          <!-- Dynamic Breadcrumb -->
+          <p id="breadcrumb" class="text-white"></p>
+          <h1>Our Leadership</h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MAIN CONTENT SECTION ================= -->
+
+    <!-- ================= CONTENT CARD SECTION ================= -->
+    <div class="container py-5">
+
+      <div class="row g-4">
+        <!-- Mission -->
+
+        <div class="col-lg-6">
+          <div class="mini-card-orange-border">
+            <h5>Our Mission</h5>
+            <p class="text-small mt-4">
+              To deliver world-class infrastructure, construction, and
+              technology solutions with precision, innovation, and
+              uncompromising quality while contributing to the development of
+              sustainable and impactful built environments.
+            </p>
+            <p class="text-small mt-2">
+              We aim to consistently deliver projects on time, within budget,
+              and maintain long-term relationships with clients, partners,
+              suppliers, and employees through transparency, integrity, and
+              trust.
+            </p>
+          </div>
+        </div>
+
+        <!-- Vision -->
+
+        <div class="col-lg-6">
+          <div class="mini-card-orange-border">
+            <h5>Our Vision</h5>
+            <p class="text-small mt-4">
+              To be recognized as a trusted infrastructure, construction, and IT
+              solutions partner delivering innovative, sustainable, and
+              quality-driven projects across India and globally.
+            </p>
+            <p class="text-small mt-2">
+              We strive to continuously expand our capabilities while setting
+              new benchmarks in engineering excellence, operational efficiency,
+              and technology-driven development.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VALUES SECTION -->
+
+    <div class="container pb-5">
+      <h3 class="text-center section-title mb-5">Our Values</h3>
+
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="mini-card-orange-border">
+            <h5>Customer Focus</h5>
+            <p class="text-small mt-4">
+              We prioritize our clients' needs and deliver solutions that exceed
+              expectations and create long-term value.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="mini-card-orange-border">
+            <h5>Passion for Innovation</h5>
+            <p class="text-small mt-4">
+              We continuously adopt modern technologies and innovative practices
+              to deliver efficient and future-ready infrastructure solutions.
+            </p>
+          </div>
+        </div>
+
+
+        <div class="col-lg-4 col-md-6">
+          <div class="mini-card-orange-border">
+            <h5>Responsibility & Sustainability</h5>
+            <p class="text-small mt-4">
+              We promote responsible construction practices and environmentally
+              sustainable approaches in all our projects.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="mini-card-orange-border">
+            <h5>Unity & Collaboration</h5>
+            <p class="text-small mt-4">
+              Our team works collaboratively across disciplines to ensure
+              seamless project execution and shared success.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="mini-card-orange-border">
+            <h5>People First</h5>
+            <p class="text-small mt-4">
+              We maintain strict safety standards to ensure the wellbeing of
+              employees, partners, and stakeholders.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="mini-card-orange-border">
+            <h5>Trust & Integrity</h5>
+            <p class="text-small mt-4">
+              Transparency, honesty, and ethical conduct form the foundation of
+              every relationship we build.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= GLOBAL FOOTER ================= -->
+    <div id="footer"></div>
+
+    <!-- HEADER LOAD -->
+    <script>
+      fetch("../../partials/header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("header").innerHTML = data;
+        });
+    </script>
+
+    <!-- FOOTER LOAD -->
+    <script>
+      fetch("../../partials/footer.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+
+    <!-- BOOTSTRAP JS (ONLY ONCE, LAST) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Global JS -->
+    <script src="../../assets/js/main.js"></script>
+
+    <!-- Breadcrumbs JS -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const breadcrumbContainer = document.getElementById("breadcrumb");
+        if (!breadcrumbContainer) return;
+
+        let path = window.location.pathname;
+
+        // Remove leading/trailing slash
+        path = path.replace(/^\/|\/$/g, "");
+
+        let parts = path.split("/");
+
+        // 🔥 Remove index.html if present
+        if (parts[parts.length - 1] === "index.html") {
+          parts.pop();
+        }
+
+        let breadcrumbHTML = `<a href="/index.html" class="text-white text-decoration-none">Home</a>`;
+
+        let currentPath = "";
+
+        parts.forEach((part, index) => {
+          if (!part) return;
+
+          currentPath += "/" + part;
+
+          // Format text
+          const formattedText = part
+            .replace(/-/g, " ")
+            .replace(/\b\w/g, (char) => char.toUpperCase());
+
+          breadcrumbHTML += " / ";
+
+          // Last item (current page)
+          if (index === parts.length - 1) {
+            breadcrumbHTML += `<span>${formattedText}</span>`;
+          } else {
+            breadcrumbHTML += `
+        <a href="${currentPath}/" class="text-white text-decoration-none">
+          ${formattedText}
+        </a>
+      `;
+          }
+        });
+
+        breadcrumbContainer.innerHTML = breadcrumbHTML;
+      });
+    </script>
+  </body>
+</html>

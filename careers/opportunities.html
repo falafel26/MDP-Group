@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MDP Group | Opportunities</title>
+
+    
+    <!-- ================= BOOTSTRAP CSS ================= -->
+  </head>
+
+  <body>
+    <!-- ================= GLOBAL HEADER ================= -->
+    <div id="header" class="sticky-top" style="z-index: 1050"></div>
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <!-- HERO SECTION -->
+
+    <section>
+      <div
+        class="hero-section-extra"
+        style="
+          background-image: url(&quot;../assets/images/hero/opportunities.png&quot;);
+        "
+      >
+        <div class="container text-white" style="margin-top: -50px">
+          <!-- Dynamic Breadcrumb -->
+          <p id="breadcrumb" class="text-white"></p>
+
+          <h1>Work With Us</h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CAREER SECTION ================= -->
+
+    <section>
+      <div class="container section">
+        <div class="row justify-content-between" id="careers-container"></div>
+      </div>
+    </section>
+
+    <template id="career-card-template">
+      <div class="col-12 col-sm-4 mb-4">
+        <div class="mini-card shadow-sm">
+          <div class="p-4">
+            <h5 class="career-title"></h5>
+            <p class="text-small mb-2 mt-3 career-description"></p>
+            <a class="btn button-extra mt-3 career-link" href="#">
+              Apply →
+            </a>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- ================= SEND US YOUR CV SECTION ================= -->
+
+    <section>
+      <div
+        class="bg-light p-5"
+      >
+        <div class="container text-center">
+          <!-- Dynamic Breadcrumb -->
+
+          <h2>Send Us Your CV</h2>
+          <p class="text-small mb-4 mt-3">
+            Don't see a role that fits you? Send us your CV and we'll keep it
+            on file for future opportunities.
+          </p>
+          <p class="text-primary">hello@mdpgroup.com</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GLOBAL FOOTER ================= -->
+    <div id="footer"></div>
+
+    <!-- HEADER LOAD -->
+    <script>
+      fetch("../../partials/header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("header").innerHTML = data;
+        });
+    </script>
+
+    <!-- FOOTER LOAD -->
+    <script>
+      fetch("../../partials/footer.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+
+    <!-- BOOTSTRAP JS (ONLY ONCE, LAST) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Global JS -->
+    <script src="../../assets/js/main.js"></script>
+
+    <!-- Breadcrumbs JS -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const breadcrumbContainer = document.getElementById("breadcrumb");
+        if (!breadcrumbContainer) return;
+
+        let path = window.location.pathname;
+
+        // Remove leading/trailing slash
+        path = path.replace(/^\/|\/$/g, "");
+
+        let parts = path.split("/");
+
+        // 🔥 Remove index.html if present
+        if (parts[parts.length - 1] === "index.html") {
+          parts.pop();
+        }
+
+        let breadcrumbHTML = `<a href="/index.html" class="text-white text-decoration-none">Home</a>`;
+
+        let currentPath = "";
+
+        parts.forEach((part, index) => {
+          if (!part) return;
+
+          currentPath += "/" + part;
+
+          // Format text
+          const formattedText = part
+            .replace(/-/g, " ")
+            .replace(/\b\w/g, (char) => char.toUpperCase());
+
+          breadcrumbHTML += " / ";
+
+          // Last item (current page)
+          if (index === parts.length - 1) {
+            breadcrumbHTML += `<span>${formattedText}</span>`;
+          } else {
+            breadcrumbHTML += `
+        <a href="${currentPath}/" class="text-white text-decoration-none">
+          ${formattedText}
+        </a>
+      `;
+          }
+        });
+
+        breadcrumbContainer.innerHTML = breadcrumbHTML;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>MDP Group | Blog</title>
+  </head>
+
+  <!-- ================= BLOG STYLING ================= -->
+
+  <style>
+    .blog-card {
+      transition: all 0.3s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+    }
+
+    .blog-img-wrapper {
+      overflow: hidden;
+    }
+
+    .blog-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .blog-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .blog-excerpt {
+      font-size: 14px;
+      color: #555;
+    }
+
+  </style>
+
+  <body>
+    <!-- ================= GLOBAL HEADER ================= -->
+
+    <div id="header" class="sticky-top" style="z-index: 1050"></div>
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section>
+      <div
+        class="hero-section-extra"
+        style="
+          background-image: url(&quot;../../assets/images/hero/overview.png&quot;);
+        "
+      >
+        <div class="container text-white text-center" style="margin-top: -50px">
+          <p id="breadcrumb" class="text-white"></p>
+
+          <h1>Blog</h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BLOG SECTION ================= -->
+
+    <section>
+      <div class="container section">
+        <div class="row" id="blog-container"></div>
+      </div>
+    </section>
+
+    <!-- ================= BLOG CARD TEMPLATE ================= -->
+
+    <template id="blog-card-template">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="mini-card-no-border shadow-sm h-100 blog-card">
+          <div class="blog-img-wrapper">
+            <img class="blog-image" src="" alt="" />
+          </div>
+
+          <div class="p-3">
+            <p class="blog-date text-small text-muted mb-1"></p>
+
+            <h5 class="blog-title"></h5>
+
+            <p class="blog-excerpt text-small"></p>
+
+            <a class="blog-link text-decoration-none fw-semibold">
+              Read More →
+            </a>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- ================= GLOBAL FOOTER ================= -->
+
+    <div id="footer"></div>
+
+    <!-- ================= LOAD HEADER ================= -->
+
+    <script>
+      fetch("../../partials/header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("header").innerHTML = data;
+        });
+    </script>
+
+    <!-- ================= LOAD FOOTER ================= -->
+
+    <script>
+      fetch("../../partials/footer.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+
+    <!-- ================= BOOTSTRAP ================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ================= MAIN JS ================= -->
+
+    <script src="../../assets/js/main.js"></script>
+
+    <!-- ================= BREADCRUMB SCRIPT ================= -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const breadcrumbContainer = document.getElementById("breadcrumb");
+
+        if (!breadcrumbContainer) return;
+
+        let path = window.location.pathname;
+
+        path = path.replace(/^\/|\/$/g, "");
+
+        let parts = path.split("/");
+
+        if (parts[parts.length - 1] === "index.html") {
+          parts.pop();
+        }
+
+        let breadcrumbHTML = `<a href="/index.html" class="text-white text-decoration-none">Home</a>`;
+
+        let currentPath = "";
+
+        parts.forEach((part, index) => {
+          if (!part) return;
+
+          currentPath += "/" + part;
+
+          const formattedText = part
+            .replace(/-/g, " ")
+            .replace(/\b\w/g, (char) => char.toUpperCase());
+
+          breadcrumbHTML += " / ";
+
+          if (index === parts.length - 1) {
+            breadcrumbHTML += `<span>${formattedText}</span>`;
+          } else {
+            breadcrumbHTML += `<a href="${currentPath}/" class="text-white text-decoration-none">
+            ${formattedText}
+            </a>`;
+          }
+        });
+
+        breadcrumbContainer.innerHTML = breadcrumbHTML;
+      });
+    </script>
+
+    <!-- ================= BLOG SCRIPT ================= -->
+
+    <script>
+      /* ===========================
+   BLOG DATA
+=========================== */
+
+      const blogData = [
+        {
+          title: "Advancing Infrastructure Development Across India",
+          image: "../../assets/images/blog/blog-1.png",
+          date: "12 March 2026",
+          excerpt:
+            "MDP Group continues to deliver large scale infrastructure projects including institutional buildings and public facilities.",
+          link: "https://www.researchgate.net/publication/360814055_Infrastructure_Development_in_India_The_Way_Ahead",
+        },
+
+        {
+          title: "Innovations in Smart Infrastructure",
+          image: "../../assets/images/blog/blog-2.png",
+          date: "05 March 2026",
+          excerpt:
+            "Technology driven construction and smart systems are transforming how modern infrastructure is designed and executed.",
+          link: "https://www.sciencedirect.com/science/article/pii/S026427512200155X",
+        },
+
+        {
+          title: "Strengthening Electrical Infrastructure",
+          image: "../../assets/images/blog/blog-3.png",
+          date: "26 February 2026",
+          excerpt:
+            "Our electrical distribution projects are helping improve energy accessibility and reliability across multiple regions.",
+          link: "https://www.sciencedirect.com/science/article/pii/S2352146523005689",
+        },
+
+        {
+          title: "Sustainable Construction Practices",
+          image: "../../assets/images/blog/blog-4.png",
+          date: "18 February 2026",
+          excerpt:
+            "MDP Group integrates sustainable engineering practices to reduce environmental impact while delivering high quality infrastructure.",
+          link: "https://www.tensar.co.uk/resources/articles/sustainable-construction-methods",
+        },
+
+        {
+          title: "Modern IT Infrastructure Solutions",
+          image: "../../assets/images/blog/blog-5.png",
+          date: "10 February 2026",
+          excerpt:
+            "Our IT division delivers enterprise level infrastructure including data centers, networking and smart monitoring systems.",
+          link: "https://www.ibm.com/think/topics/infrastructure",
+        },
+
+        {
+          title: "Delivering Large Scale Government Projects",
+          image: "../../assets/images/blog/blog-6.png",
+          date: "01 February 2026",
+          excerpt:
+            "The group has successfully executed multiple government infrastructure projects across India with precision and quality.",
+          link: "https://www.sciencedirect.com/science/article/abs/pii/S0263786315001921",
+        },
+      ];
+
+      /* ===========================
+   RENDER BLOGS
+=========================== */
+
+      function renderBlogs() {
+        const container = document.getElementById("blog-container");
+        const template = document.getElementById("blog-card-template");
+
+        if (!container || !template) return;
+
+        blogData.forEach((item) => {
+          const clone = template.content.cloneNode(true);
+
+          clone.querySelector(".blog-image").src = item.image;
+          clone.querySelector(".blog-image").alt = item.title;
+
+          clone.querySelector(".blog-title").innerText = item.title;
+          clone.querySelector(".blog-date").innerText = item.date;
+          clone.querySelector(".blog-excerpt").innerText = item.excerpt;
+
+          clone.querySelector(".blog-link").href = item.link;
+
+          container.appendChild(clone);
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        renderBlogs();
+      });
+    </script>
+  </body>
+</html>

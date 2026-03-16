@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MDP Group | Home</title>
+
+    <!-- ================= BOOTSTRAP CSS ================= -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- ================= GOOGLE FONT ================= -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Add Bebas Neue to your Google Fonts link -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+    <!-- ================= GLOBAL CSS ================= -->
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+
+    <!-- ================= PAGE-SPECIFIC CSS ================= -->
+
+    <style>
+      /* RESET */
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* HERO SLIDER */
+      .hero-slider {
+        position: relative;
+        width: 100%;
+        height: 70vh;
+        overflow: hidden;
+      }
+
+      .hero-slides {
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      .hero-slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1.2s ease-in-out;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+        z-index: 1;
+      }
+
+      /* OVERLAY */
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to right,
+          rgba(10, 37, 64, 0.7),
+          rgba(10, 37, 64, 0.4),
+          rgba(10, 37, 64, 0)
+        );
+        z-index: 1;
+      }
+
+      /* CONTENT */
+      .hero .container {
+        position: relative;
+        z-index: 2;
+        color: #fff;
+      }
+
+      .hero h1 {
+        font-size: 5rem;
+        font-weight: 800;
+      }
+
+      .hero h2 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        opacity: 0.9;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+        max-width: 620px;
+        opacity: 0.95;
+      }
+
+      /* BUTTON */
+      .btn-primary-custom {
+        display: inline-block;
+        padding: 14px 34px;
+        background: #ffb400;
+        color: #000;
+        font-weight: 600;
+        border-radius: 40px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      /* DOTS */
+      .hero-dots {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+        z-index: 5;
+      }
+
+      .hero-dots .dot {
+        width: 10px;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .hero-dots .dot.active {
+        background: #f4b400;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ================= GLOBAL HEADER ================= -->
+    <div id="header"></div>
+
+    <!-- ================= HERO SECTION================= -->
+    <!-- HERO SLIDER -->
+    <section class="hero hero-slider">
+      <div class="hero-slides">
+        <!-- Slide 1 -->
+        <div class="hero-slide active" data-bg="assets/images/hero/manufacturing-transformers.png">
+          <div class="hero-overlay"></div>
+          <div class="container">
+            <h2 class="mb-3">Engineering Excellence in</h2>
+            <h1>Manu<span>facturing</span></h1>
+            <p>
+              Delivering precision engineering, quality manufacturing, and
+          industrial solutions designed to power modern infrastructure.
+            </p>
+            <a href="products.html" class="btn-primary-custom"
+              >Explore Manufacturing →</a>
+            <a href="#" class="btn-ghost-custom">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="hero-slide" data-bg="assets/images/hero/power-distribution.png">
+          <div class="hero-overlay"></div>
+          <div class="container">
+            <h2>Reliable Infrastructure for</h2>
+            <h1>Power &<span> Energy</span></h1>
+            <p>
+              Supporting energy distribution networks with reliable engineering
+              solutions for utilities, industries, and infrastructure projects.
+            </p>
+            <a href="projects.html" class="btn-primary-custom"
+              > Power Solutions →</a>
+            <a href="#" class="btn-ghost-custom">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="hero-slide" data-bg="assets/images/hero/civil-construction.png">
+          <div class="hero-overlay"></div>
+          <div class="container">
+            <h2>Building the Future Through</h2>
+            <h1>Civil & <span>Infrastructure</span></h1>
+            <p>
+              Delivering construction and infrastructure development solutions
+          that support sustainable growth and urban expansion.
+            </p>
+            <a href="contact.html" class="btn-primary-custom">Infrastructure Projects →</a>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="hero-slide" data-bg="assets/images/hero/information-technology.png">
+          <div class="hero-overlay"></div>
+          <div class="container">
+            <h2>Driving Innovation Through</h2>
+            <h1>Information <span>Technology</span></h1>
+            <p>
+              Leveraging digital technologies, automation, and data-driven
+              systems to enable smarter and more efficient businesses.
+            </p>
+            <a href="contact.html" class="btn-primary-custom">Technology Solutions →</a>
+          </div>
+        </div>
+
+    </div>
+
+      <!-- Dots -->
+      <div class="hero-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </section>
+
+    <!-- ================= CLIENTS SECTION ================= -->
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h3>Empowering Clients with Quality</h3>
+          <p class="text-muted mt-3">
+            MDP Powertech builds lasting client relationships through
+            quality,<br />
+            reliability, and over a decade of expertise in transformer
+            manufacturing and in-house technical innovation.
+          </p>
+        </div>
+
+        <div class="logo-carousel-wrapper">
+          <div class="logo-carousel">
+            <!-- LOGO ITEM -->
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-bpcl.png" alt="Client 1" />
+            </div>
+
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-dainik-bhaskar.png" alt="Client 2" />
+            </div>
+
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-jk-police.png" alt="Client 3" />
+            </div>
+
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-ayushman-bharat.png" alt="Client 4" />
+            </div>
+
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-mmkvvcl.png" alt="Client 5" />
+            </div>
+
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-mpsedc.png" alt="Client 6" />
+            </div>
+            
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-national-health-mission.png" alt="Client 7" />
+            </div>
+
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-mppwd.png" alt="Client 8" />
+            </div>
+
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-eil.png" alt="Client 9" />
+            </div>
+
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-mp-police.png" alt="Client 10" />
+            </div>
+
+            <!-- DUPLICATE SET FOR INFINITE SCROLL -->
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-bpcl.png" alt="Client 1" />
+            </div>
+
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-dainik-bhaskar.png" alt="Client 2" />
+            </div>
+
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-jk-police.png" alt="Client 3" />
+            </div>
+
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-ayushman-bharat.png" alt="Client 4" />
+            </div>
+
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-mmkvvcl.png" alt="Client 5" />
+            </div>
+
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-mpsedc.png" alt="Client 6" />
+            </div>
+            
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-national-health-mission.png" alt="Client 7" />
+            </div>
+
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-mppwd.png" alt="Client 8" />
+            </div>
+
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-eil.png" alt="Client 9" />
+            </div>
+
+            <div class="logo-card">
+              <img src="assets/images/logo/logo-mp-police.png" alt="Client 10" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRODUCT SECTION ================= -->
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Product Range</h2>
+          <p class="text-muted mt-3">
+            Our product range is built to deliver reliable performance, from
+            transformers to poles, <br />structures, and earthing
+            systems—engineered with precision to meet the diverse needs of power
+            utilities and<br />
+            infrastructure projects.
+          </p>
+        </div>
+
+        <div class="row" id="products-container"></div>
+
+        <!-- PRODUCT CARD TEMPLATE -->
+        <template id="product-card-template">
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="mini-card-no-border shadow-sm h-100">
+              <img
+                class="product-image"
+                src=""
+                alt=""
+                style="width: 100%; height: 220px; object-fit: cover"
+              />
+
+              <div class="p-4">
+                <h5 class="product-title"></h5>
+
+                <p class="text-muted mt-3 mb-2 product-description"></p>
+                <a class="product-link mt-2" href="#"> Read More → </a>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT US SECTION ================= -->
+
+    <section class="section bg-primary py-5">
+      <div class="container py-5">
+        <div class="row align-items-end">
+          <!-- LEFT CONTENT -->
+          <div class="col-lg-6">
+            <div class="pe-4">
+              <h4 class="text-white">
+                A Dynamic Group Driving Innovation Across Industries
+              </h4>
+
+              <p class="mt-3 text-light">
+                We are a forward-looking business group engaged in multiple sectors including
+                infrastructure, manufacturing, power systems, and information technology,
+                delivering reliable solutions that support modern development.
+                <br /><br />
+                With a strong foundation built on expertise, innovation, and operational
+                excellence, our organizations work together to create value across diverse
+                industries. From engineering and infrastructure to technology-driven
+                solutions, we focus on sustainable growth, quality execution, and a
+                customer-centric approach that enables us to contribute to projects and
+                communities across India and beyond.
+              </p>
+
+              <a class="text-white" href="#"> Know More → </a>
+            </div>
+
+            <!-- MINI CARDS -->
+            <div class="row g-4 mt-4">
+              <div class="col-md-6">
+                <div class="stat-card">
+                  <h3>15+</h3>
+                  <p>Years of Excellence Across Industries</p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="stat-card">
+                  <h3>500+</h3>
+                  <p class="mt-2">Projects Delivered Pan-India</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT SIDE (OPTIONAL IMAGE / FUTURE CONTENT) -->
+          <!--<div class="col-lg-6 d-none d-lg-block">
+            <div class="visual-grid">
+              <div class="visual-card"></div>
+              <div class="visual-card"></div>
+              <div class="visual-card"></div>
+              <div class="visual-card"></div>-->
+
+              <!-- CENTER CIRCLE -->
+              <!--<div class="center-circle"></div>
+            </div>-->
+            <!-- RIGHT SIDE — 4 image tiles with logo circle -->
+              <div class="col-lg-6 d-none d-lg-block">
+                <div class="visual-grid">
+
+                  <div class="visual-card" style="background-image: url('assets/images/gallery/chhatisgarh-niwas-4.png');">
+                    <div class="visual-card-overlay"></div>
+                    <div class="visual-card-label">
+                      <span class="vc-sector">Civil</span>
+                      <span class="vc-name">Civil &amp; Construction</span>
+                    </div>
+                  </div>
+
+                  <div class="visual-card" style="background-image: url('assets/images/information-technology/computer-labs.png');">
+                    <div class="visual-card-overlay"></div>
+                    <div class="visual-card-label">
+                      <span class="vc-sector">Technology</span>
+                      <span class="vc-name">Information Technology</span>
+                    </div>
+                  </div>
+
+                  <div class="visual-card" style="background-image: url('assets/images/gallery/transformer-manufacturing-3.png');">
+                    <div class="visual-card-overlay"></div>
+                    <div class="visual-card-label">
+                      <span class="vc-sector">Manufacturing</span>
+                      <span class="vc-name">Manufacturing</span>
+                    </div>
+                  </div>
+
+                  <div class="visual-card" style="background-image: url('assets/images/power-distribution/bhind-project.png');">
+                    <div class="visual-card-overlay"></div>
+                    <div class="visual-card-label">
+                      <span class="vc-sector">Energy</span>
+                      <span class="vc-name">Power Supply &amp; Distribution</span>
+                    </div>
+                  </div>
+
+                  <!-- CENTER CIRCLE — replace SVG with your logo img tag -->
+                  <div class="center-circle">
+                    <img src="assets/images/logo/logo-mdp.png" alt="MDP Group Logo" />
+                  </div>
+
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="manufacturing-solutions">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Card 1 -->
+          <div class="col-lg-3 col-md-6">
+            <div class="mini-card-orange-border">
+              <img src="assets/icons/iot-icon.png" alt="" />
+              <h5>Infrastructure Development</h5>
+              <p>
+                Delivering civil engineering and construction solutions that support
+                modern infrastructure, urban expansion, and sustainable development.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col-lg-3 col-md-6">
+            <div class="mini-card-orange-border">
+              <img src="assets/icons/ai-quality.png" alt="" />
+              <h5>Information & Technology</h5>
+              <p>
+                Leveraging digital technologies, data systems, and automation to
+                enable efficient operations and smart industry solutions.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-lg-3 col-md-6">
+            <div class="mini-card-orange-border">
+              <img src="assets/icons/quality-automation.png" alt="" />
+              <h5>Manufacturing Excellence</h5>
+              <p>
+                Advanced manufacturing practices focused on precision engineering,
+                quality assurance, and efficient production systems.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="col-lg-3 col-md-6">
+            <div class="mini-card-orange-border">
+              <img src="assets/icons/robotics.png" alt="" />
+              <h5>Power & Energy Systems</h5>
+              <p>
+                Supporting reliable power infrastructure through engineering
+                solutions designed for modern energy distribution networks.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="col-lg-3 col-md-6">
+            <div class="mini-card-orange-border">
+              <img src="assets/icons/digital-twin.png" alt="" />
+              <h5>Innovation & Technology</h5>
+              <p>
+                Integrating emerging technologies and digital innovation to enhance
+                productivity and operational efficiency across industries.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="col-lg-3 col-md-6">
+            <div class="mini-card-orange-border">
+              <img src="assets/icons/energy-monitoring.png" alt="" />
+              <h5>Sustainable Development</h5>
+              <p>
+                Promoting responsible growth through energy efficiency,
+                environmental awareness, and sustainable business practices.
+              </p>
+            </div>
+          </div>
+
+          <!-- CTA Card -->
+          <div class="col-lg-6 col-md-12">
+            <div class="mini-card">
+              <h4>Explore Our Group Capabilities</h4>
+              <a href="#" class="btn-primary">
+                Discover Our Businesses →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- ================= STATS BAR ================= -->
+    <section class="stats-bar">
+      <div class="container">
+        <div class="stats-grid">
+
+          <div class="stat-item">
+            <span class="stat-number" data-target="15" data-suffix="+">15+</span>
+            <span class="stat-label">Years of Experience</span>
+          </div>
+
+          <div class="stat-divider"></div>
+
+          <div class="stat-item">
+            <span class="stat-number" data-target="500" data-suffix="+">500+</span>
+            <span class="stat-label">Projects Delivered</span>
+          </div>
+
+          <div class="stat-divider"></div>
+
+          <div class="stat-item">
+            <span class="stat-number" data-target="4">4</span>
+            <span class="stat-label">Industry Sectors</span>
+          </div>
+
+          <div class="stat-divider"></div>
+
+          <div class="stat-item">
+            <span class="stat-number">Pan-India</span>
+            <span class="stat-label">Presence &amp; Reach</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+          <!-- ================= CTA BANNER ================= -->
+    <section class="cta-banner">
+      <div class="cta-overlay"></div>
+      <div class="container cta-inner">
+        <div class="cta-text">
+          <h2>Ready to Build Something Great?</h2>
+          <p>Partner with MDP Group for reliable, innovative solutions across infrastructure, manufacturing, power, and technology.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn-primary-custom">Get In Touch →</a>
+          <a href="about.html" class="btn-ghost-cta">About Our Group</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GLOBAL FOOTER ================= -->
+
+    <div id="footer"></div>
+
+    <!-- ================= BOOTSTRAP JS ================= -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ================= GLOBAL JS (LOAD PARTIALS) ================= -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
