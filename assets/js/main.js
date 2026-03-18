@@ -151,39 +151,40 @@ function loadProductDetails() {
 
 /* =========================================================
    PRODUCT LISTING DATA
+   link: direct HTML page for each business vertical
 ========================================================= */
 const productListingData = [
   {
     title: "Civil & Construction",
     description:
-      "Trends, technologies, and project insights from the civil engineering and construction sector. Explore topics covering infrastructure development, materials, structural systems, and modern construction practices.",
+        "End-to-end civil and construction capabilities. Ensuring structural integrity, quality, and on-time execution.",
     image: "assets/images/civil-construction/m3m-crown.png",
     alt: "contribution-of-mdp-in-Civil-sector",
-    id: "Civil",
+    link: "businesses/civil-and-construction/index.html",
   },
   {
     title: "Information & Technology",
     description:
-      "Insights into digital transformation, industrial automation, data systems, and emerging technologies shaping modern businesses and infrastructure.",
+        "Integrated digital transformation and automation capabilities. Enabling efficiency, scalability, and operational control.",
     image: "assets/images/information-technology/data-centre.png",
     alt: "contribution-of-mdp-in-IT-sector",
-    id: "Information-Technology",
+    link: "businesses/information-and-technology/index.html",
   },
   {
     title: "Manufacturing & Industry",
     description:
-      "Discover innovations in industrial production, engineering processes, quality systems, and the technologies driving modern manufacturing.",
+        "Engineering manufacturing systems for performance and scale. Focused on quality, optimization, and reliability.",
     image: "assets/images/manufacturing/manufacturing-bg.jpg",
     alt: "contribution-of-mdp-in-Manufacturing-sector",
-    id: "Manufacturing-Transformers",
+    link: "businesses/manufacturing/index.html",
   },
   {
     title: "Power Supply & Distribution",
     description:
-      "Knowledge and analysis on electrical networks, grid infrastructure, transformers, and sustainable power distribution systems.",
+          "Powering infrastructure through advanced electrical systems. Delivering reliability, efficiency, and sustained performance.",
     image: "assets/images/power-distribution/power-distribution.png",
-    alt: "Custom Transformers",
-    id: "custom-transformer",
+    alt: "Power Supply and Distribution",
+    link: "businesses/power-supply-and-distribution/index.html",
   },
 ];
 
@@ -203,8 +204,7 @@ function renderProductListing() {
     clone.querySelector(".product-image").alt = product.alt;
     clone.querySelector(".product-title").innerText = product.title;
     clone.querySelector(".product-description").innerText = product.description;
-    clone.querySelector(".product-link").href =
-      `products-details.html?id=${product.id}`;
+    clone.querySelector(".product-link").href = product.link;
 
     container.appendChild(clone);
   });
@@ -667,12 +667,14 @@ document.addEventListener("DOMContentLoaded", () => {
     slide.style.backgroundImage = `url(${bg})`;
   });
 
+
   function showSlide(index) {
     slides.forEach((slide, i) => {
       slide.classList.toggle("active", i === index);
       dots[i].classList.toggle("active", i === index);
     });
     current = index;
+
   }
 
   function nextSlide() {
@@ -691,7 +693,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function animateCounter(el) {
     const target = el.getAttribute('data-target');
     const isNumeric = !isNaN(target);
-    if (!isNumeric) return; // skip "Pan-India" text
+    if (!isNumeric) return;
 
     const duration = 1800;
     const start = performance.now();
@@ -699,29 +701,96 @@ document.addEventListener("DOMContentLoaded", () => {
     function update(now) {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
-
-      // Ease-out curve — fast start, slow finish
       const ease = 1 - Math.pow(1 - progress, 3);
       const current = Math.floor(ease * parseInt(target));
-
       el.textContent = current + (el.getAttribute('data-suffix') || '');
-
       if (progress < 1) requestAnimationFrame(update);
     }
 
     requestAnimationFrame(update);
   }
 
-  // Trigger when stats bar scrolls into view
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.querySelectorAll('.stat-number[data-target]').forEach(animateCounter);
-        observer.unobserve(entry.target); // run only once
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.3 });
 
   const statsBar = document.querySelector('.stats-bar');
   if (statsBar) observer.observe(statsBar);
+});
+
+/* =========================================================
+   CLIENTS SECTION — COUNTER ANIMATION
+========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  function animateClientCounter(el) {
+    const target = parseInt(el.getAttribute('data-target'));
+    const suffix = el.getAttribute('data-suffix') || '';
+    if (isNaN(target)) return;
+    const duration = 1600;
+    const start = performance.now();
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target) + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  const clientsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.clients-stat-num[data-target]').forEach(animateClientCounter);
+        clientsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  const clientsSection = document.querySelector('.clients-section');
+  if (clientsSection) clientsObserver.observe(clientsSection);
+});
+
+/* =========================================================
+   CLIENTS SECTION — SCROLL REVEAL + COUNTER ANIMATION
+========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* --- Counter animation --- */
+  function animateClientCounter(el) {
+    const target = parseInt(el.getAttribute('data-target'));
+    const suffix = el.getAttribute('data-suffix') || '';
+    if (isNaN(target)) return;
+    const duration = 1600;
+    const start = performance.now();
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target) + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  /* --- Reveal observer --- */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Fire counters when header row becomes visible
+        entry.target.querySelectorAll('.clients-stat-num[data-target]')
+          .forEach(animateClientCounter);
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal-up').forEach(el => {
+    revealObserver.observe(el);
+  });
+
 });
